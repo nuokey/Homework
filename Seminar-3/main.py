@@ -11,7 +11,6 @@ def fib(n):
 
 # Раскладывание числа на простые множители
 def prost(n):
-	
 	for i in range(2, n+1):
 		# print(n, i)
 		if n % i == 0:
@@ -20,12 +19,11 @@ def prost(n):
 	else:
 		return ""
 
-
 # print(prost(int(input())))
 
 
 # Упражнение 3
-def three():
+# def three():
 	
 
 # Упражнение 4
@@ -35,7 +33,7 @@ def triangle():
 	s = a[1]
 
 	for i in range(n):
-		if i <= n // 2-1:
+		if i <= n // 2 - 1:
 			print(s*(i+1))
 		else:
 			print(s*(n-i))
@@ -57,10 +55,7 @@ def spiral():
 	while len(l)//2 != n*m:
 		s[x, y] = len(l)//2 + 1
 
-		
-
 		l.append((x, y))
-
 		
 		if d == 0:
 			if y == m - 1:
