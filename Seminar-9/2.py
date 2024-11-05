@@ -4,7 +4,6 @@ import re
 def ev(a):
     a = a.split()
     a = ' '.join([a[0], a[2], a[1]])
-
     return eval(a)
 
 
@@ -25,5 +24,4 @@ def f(a):
 
 
 a = input('Введите арифметическое выражение. Числа значения вводятся через пробел  \n')
-r = f(a)
 print(f(a))

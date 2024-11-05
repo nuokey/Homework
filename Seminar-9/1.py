@@ -1,5 +1,5 @@
 import re
-f = int(input('Если префиксная форма, введите - 1, если инфиксная - 2 \n'))
+f = int(input('Если префиксная форма, введите - 1, если постфиксная - 2 \n'))
 a = input('Введите арифметическое выражение: \n').replace(' ', '')
 Z = {'*':'.', '/':',', '+':'!', '-':'_'}
 
@@ -13,14 +13,16 @@ def p_post(a):
         a = a.replace(f'{i}', f' {i} ')
 
     a = a.split(' ')
+
     for z in '/*':
         while z in a:
             a = a[:a.index(f'{z}') - 1] + [' ' + a[a.index(f'{z}') - 1] + ' ' + a[a.index(f'{z}') + 1] + ' ' + f'{Z[z]}'] + a[a.index(f'{z}') + 2:]
 
     for z in '.,':
         while z in a:
-            k = a[::-1].index(z)
+            k = a[::].index(z)
             a = a[:k] + [''.join(a[k:k + 3:])] + a[k+3::]
+            print(a)
 
     for z in '+-':
         while z in a:
@@ -33,8 +35,7 @@ def post(a):
     groups = [m.group() for m in re.finditer(r"(\([^\(]*?\))", a)]
 
     if '(' not in a:
-        print(a, ' ---------', p_post(a))
-
+        #print(a, ' ---------', p_post(a))
         return p_post(a)
 
 
@@ -91,6 +92,7 @@ if f == 2:
     an = post(a)
 else:
     an = pref(a)
+
 for i in Z.items():
     if i[1] in an:
         an = an.replace(i[1], i[0])
