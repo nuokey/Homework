@@ -1,9 +1,8 @@
 class Node():
-    def __init__(self, key=None, left=None, right=None, level=None):
+    def __init__(self, key=None, left=None, right=None):
         self.key = key
         self.left = left
         self.right = right
-        self.level = level
 
 a = Node(10)
 a.left = Node(7)
@@ -29,6 +28,7 @@ c.right = Node(15)
 c.right.left = Node(90)
 c.right.right = Node(0)
 
+# Четвертое задание
 def mirror(a):
     if a.left == None and a.right == None:
         return a
@@ -49,3 +49,12 @@ def areSimmetrical(a, b):
 print(areSimmetrical(a, b))
 
 
+france = [int(i) for i in input().split(" ")]
+swimmers = [int(i) for i in input().split(" ")]
+pianists = [int(i) for i in input().split(" ")]
+
+l = swimmers
+
+for i in swimmers:
+    if i not in l:
+        append
