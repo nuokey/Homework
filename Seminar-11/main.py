@@ -26,7 +26,7 @@ c.left.left = Node(8)
 c.left.right = Node(4)
 c.right = Node(15)
 c.right.left = Node(90)
-c.right.right = Node(0)
+c.right.right = Node(8)
 
 # Четвертое задание
 def mirror(a):
@@ -46,15 +46,45 @@ def isIdentical(x, y):
 def areSimmetrical(a, b):
     return isIdentical(a, mirror(b))
 
-print(areSimmetrical(a, b))
+# print(areSimmetrical(a, b))
 
 
-france = [int(i) for i in input().split(" ")]
-swimmers = [int(i) for i in input().split(" ")]
-pianists = [int(i) for i in input().split(" ")]
+# Третье упражнение
+def three():
+    france = [int(i) for i in input().split(" ")]
+    swimmers = [int(i) for i in input().split(" ")]
+    pianists = [int(i) for i in input().split(" ")]
 
-l = swimmers
+    l = france.copy()
 
-for i in swimmers:
-    if i not in l:
-        append
+    for i in swimmers:
+        if i not in l:
+            l.append(i)
+
+    for i in pianists:
+        if i not in l:
+            l.append(i)
+
+    a = []
+
+    for i in range(len(l)):
+        if l[i] in pianists and l[i] in swimmers and l[i] not in france:
+            a.append(l[i])
+
+    print(*sorted(a))
+
+# three()
+
+# Пятая задача
+def findParents(a, n, l=[]):
+    if a == n:
+        return l
+
+    elif a.left == None and a.right == None:
+        return []
+    
+    old = l
+    old.append(a.key)
+    return findParents(a.left, n, old) + findParents(a.right, n, old)
+
+print(*findParents(a, a.right.right))
