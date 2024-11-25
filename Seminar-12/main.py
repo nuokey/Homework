@@ -174,6 +174,26 @@ class DoublyLinkedList:
         self.reverse_linked_list()
         self.traverse_list()
 
+    # Четвертое упражнение
+    def delete_item(self, item):
+        self.delete_element_by_value(item)
+
+    # Пятое упражнение
+    def a1_an(self):
+        i = self.start_node
+        self.reverse_linked_list()
+        p = self.start_node
+        # print(i.pref.item, p.nref.item)
+        while i.item != p.item:
+            print(i.item-p.item)
+            i = i.pref
+            p = p.nref
+            if i.pref.item == p.item:
+                print(i.item-p.item)
+                return
+
+            
+
 class LinkedList:
     def __init__(self):
         self.start_node = None
@@ -210,19 +230,71 @@ class LinkedList:
             print(i.item)
             i = i.nref
 
+# Шестое упражнение
+class Stack:
+    def __init__(self):
+        self.data = []
+        self.u = -1
+
+    def push(self, el):
+        self.data.append(el)
+        self.u += 1
+
+    def pop(self):
+        self.u -= 1
+        p = self.data.pop(-1)
+        return p
+
+
+    def top(self):
+        return self.data[-1]
+
+
+    def size(self):
+        return len(self.data)
+
+
+    def isEmpty(self):
+        if len(self.data) == 0:
+            return False
+        return True
+
+    def printstack(self):
+        print(self.data)
+
+n = Stack()
+n.push(1)
+n.push(2)
+n.push(3)
+print(n.data)
+print(n.pop())
+print(n.data, n.u)
+print(n.top())
+print(n.size())
+print(n.isEmpty())
+n.printstack()
+
 # Задача списка
-l = DoublyLinkedList()
-l.insert_at_end(1)
-l.insert_at_end(10)
-l.insert_at_end(11)
-l.insert_at_end(4)
-l.insert_at_end(13)
-l.insert_at_end(7)
-# l.traverse_list()
+# l = DoublyLinkedList()
+# l.insert_at_end(1)
+# l.insert_at_end(10)
+# l.insert_at_end(11)
+# l.insert_at_end(4)
+# l.insert_at_end(13)
+# l.insert_at_end(7)
+
 
 # print(l.item_in_list(int(input())))
 # l.traverse_reversed_list()
 
-m = LinkedList()
-m.add_item(0, 10)
-m.traverse_list()
+# l.delete_item(1)
+
+# l.traverse_list()
+
+# print()
+
+# l.a1_an()
+
+# m = LinkedList()
+# m.add_item(0, 10)
+# m.traverse_list()
