@@ -198,6 +198,20 @@ class LinkedList:
     def __init__(self):
         self.start_node = None
 
+    def insert_in_start(self, data):
+        node = Node(data)
+        node.nref = self.start_node
+        self.start_node = node
+
+    def insert_in_end(self, data):
+        node = Node(data)
+
+        n = self.start_node
+        while n.nref != None:
+            n = n.nref
+
+        n.nref = node
+
     def add_item(self, x, data):
         p = self.start_node
         m = self.start_node.nref
@@ -228,6 +242,17 @@ class LinkedList:
         i = self.start_node
         while i != None:
             print(i.item)
+            i = i.nref
+
+    # Третье упражнение
+    def ai_an(self):
+        n = self.start_node
+        while n.nref != None:
+            n = n.nref
+        
+        i = self.start_node
+        while i.nref != None:
+            print(i.item-n.item)
             i = i.nref
 
 # Шестое упражнение
@@ -262,39 +287,52 @@ class Stack:
     def printstack(self):
         print(self.data)
 
+
+
+
 n = Stack()
 n.push(1)
 n.push(2)
 n.push(3)
-print(n.data)
-print(n.pop())
-print(n.data, n.u)
-print(n.top())
-print(n.size())
-print(n.isEmpty())
-n.printstack()
 
-# Задача списка
-# l = DoublyLinkedList()
-# l.insert_at_end(1)
-# l.insert_at_end(10)
-# l.insert_at_end(11)
-# l.insert_at_end(4)
-# l.insert_at_end(13)
-# l.insert_at_end(7)
+l = DoublyLinkedList()
+l.insert_at_end(1)
+l.insert_at_end(10)
+l.insert_at_end(11)
+l.insert_at_end(4)
+l.insert_at_end(13)
+l.insert_at_end(7)
+
+m = LinkedList()
+m.insert_in_start(10)
+m.insert_in_end(4)
+m.insert_in_end(10)
+m.insert_in_end(7)
+m.insert_in_end(3)
+m.insert_in_end(6)
+# m.traverse_list()
 
 
+# 1-я задача
 # print(l.item_in_list(int(input())))
+
+# 2-я задача
 # l.traverse_reversed_list()
 
+# 3-я задача
+# m.ai_an()
+
+# 4-я задача
 # l.delete_item(1)
 
-# l.traverse_list()
-
-# print()
-
+# 5-я задача
 # l.a1_an()
 
-# m = LinkedList()
-# m.add_item(0, 10)
-# m.traverse_list()
+# 6-я задача
+# print(n.data)
+# print(n.pop())
+# print(n.data, n.u)
+# print(n.top())
+# print(n.size())
+# print(n.isEmpty())
+# n.printstack()
