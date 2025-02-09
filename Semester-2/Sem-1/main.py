@@ -12,7 +12,7 @@ a = {
 # Первое задание
 def graphTraversal(a, n):
     global visited
-    print(n, a[n])
+    # print(n, a[n])
     
     for i in range(len(a[n])):
         if a[n][i] in visited:
@@ -30,5 +30,42 @@ def isUnited(a):
     else:
         return False
 
+# print(isUnited(a))
 
-print(isUnited(a))
+
+# Второе задание
+# def findOne(a, n, e):
+#     global visited, found
+#     # print(n, a[n])
+    
+#     for i in range(len(a[n])):
+#         if a[n][i] in visited:
+#             pass
+#         elif a[n][i] == e:
+#             found = True
+#         else:
+#             visited.append(a[n][i])
+#             findOne(a, a[n][i], e)
+# visited = [0]
+# found = False
+# findOne(a, 0, 4)
+# print(found)
+
+# Четвертое задание
+visited = []
+is_cycled = False
+def isCycled(a, n, last_visited):
+    global visited, is_cycled
+    for i in range(len(a[n])):
+        if a[n][i] in visited:
+            if a[n][i] == last_visited:
+                pass
+            else:
+                is_cycled = True
+        else:
+            visited.append(a[n][i])
+            isCycled(a, a[n][i], n)
+
+isCycled(a, 0, -1)
+print(is_cycled)
+
