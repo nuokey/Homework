@@ -202,4 +202,4 @@ def chess(n):
         for x in range(n):
             print(dijkstra_chess(n, y*n + x))
 
-chess(6)
+chess(8)
