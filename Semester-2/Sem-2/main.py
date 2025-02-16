@@ -91,25 +91,7 @@ def example_usage():
     for i, scc in enumerate(sccs, 1):
         print(f"SCC {i}: {scc}")
 
-def find_social_clusters(n, edges):
-    g = Graph()
-    for u, v in edges:
-        g.add_edge(u, v)
 
-    sccs = g.find_sccs()
-    sccs = sorted(sccs)
-
-    for i in range(len(sccs)):
-        sccs[i] = sorted(sccs[i])
-
-    for i in range(len(sccs)-1):
-        for j in range(len(sccs)-1-i):
-            if len(sccs[j]) < len(sccs[j+1]):
-                sccs[j], sccs[j+1] = sccs[j+1], sccs[j]
-
-
-
-    return sccs
 
 # print(find_social_clusters(10, [(0, 1), (1, 2), (2, 0), (3, 1), (3, 4), (4, 3), (4, 5), (5, 6), (6, 7), (7, 8), (8, 5)]))
 
@@ -136,15 +118,19 @@ def create_chessboard(n):
 
     return edges
 
-g = Graph()
-edges = create_chessboard(3)
-for u, v in edges:
-        g.add_edge(u, v)
-print(g.graph)
+# print(create_chessboard(3))
+
 
 def all_vertex(graf):
     return list(graf.keys())
-print(all_vertex(graf))
+
+#возвращаем не менее красивым списочком всех соседей данной вершины
+def vertex_neighbors(graf, vertex):
+    return list(graf[vertex].keys())
+
+#возвращаем длину ребра между двумя вершинами
+def value(graf, vertex1, vertex2):
+    return(graf[vertex1][vertex2])
 
 def dijkstra(graf, start):
     unvisited_vertexes = all_vertex(graf)
@@ -174,3 +160,45 @@ def dijkstra(graf, start):
                 previous_vertex[neighbor] = current_min_vertex
         unvisited_vertexes.remove(current_min_vertex)
     return previous_vertex, shortest_path
+
+
+
+def find_social_clusters(n, edges):
+    g = Graph()
+    for u, v in edges:
+        g.add_edge(u, v)
+
+    sccs = g.find_sccs()
+    sccs = sorted(sccs)
+
+    for i in range(len(sccs)):
+        sccs[i] = sorted(sccs[i])
+
+    for i in range(len(sccs)-1):
+        for j in range(len(sccs)-1-i):
+            if len(sccs[j]) < len(sccs[j+1]):
+                sccs[j], sccs[j+1] = sccs[j+1], sccs[j]
+
+    return sccs
+
+def dijkstra_chess(n, s):
+    g = Graph()
+    # print(n)
+    edges = create_chessboard(n)
+    for u, v in edges:
+            g.add_edge(u, v)
+    graph = {}
+
+    for i in g.graph:
+        graph[i] = {}
+        for q in g.graph[i]:
+            graph[i][q] = 1
+
+    return dijkstra(graph, s)[1]
+
+def chess(n):
+    for y in range(n):
+        for x in range(n):
+            print(dijkstra_chess(n, y*n + x))
+
+chess(6)
