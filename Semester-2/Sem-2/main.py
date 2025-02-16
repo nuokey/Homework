@@ -162,7 +162,7 @@ def dijkstra(graf, start):
     return previous_vertex, shortest_path
 
 
-
+# Задание 1
 def find_social_clusters(n, edges):
     g = Graph()
     for u, v in edges:
@@ -181,6 +181,7 @@ def find_social_clusters(n, edges):
 
     return sccs
 
+# Задание 2
 def dijkstra_chess(n, s):
     g = Graph()
     # print(n)
