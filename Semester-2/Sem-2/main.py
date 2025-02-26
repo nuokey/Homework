@@ -203,3 +203,4 @@ def chess(n):
             print(dijkstra_chess(n, y*n + x))
 
 chess(8)
+
